@@ -1,0 +1,85 @@
+ZAD 1.
+function(n){
+  fib=vector()
+  fib[1]=1
+  fib[2]=1
+  for(i in 3:n){fib[i]=fib[i-1]+fib[i-2]}
+  return(fib)
+}
+
+ZAD 2.
+function(n) n == 2L || all(n %% 2L:ceiling(sqrt(n)) != 0)
+function(n){
+  primary_div = c()
+  
+  if(n>=2 && n<=30){
+    x <- 1
+    for(i in 2:n){
+      if(n%%i == 0 && is.prime(i)){
+        primary_div[x] <- i
+        x <- x+1
+      }
+    }
+    return(primary_div)
+  }
+  else{
+    return("Error")
+  }
+}
+ZAD 3.
+function(n){
+  return(diag(n))
+}
+
+
+ZAD 4.
+function(macierz){
+  samogloski <- c("a","e","i","o","u","y")
+  new_matrix <-  matrix(nrow = 3, ncol = 4, byrow =TRUE) 
+  for(i in 1:3 ){
+    for(j in 1:4)
+
+        if(macierz[i,j] == "a" | macierz[i,j] == "e" | macierz[i,j] == "i"|macierz[i,j] == "u" | macierz[i,j] == "y" ){
+          new_matrix[i,j] <- 0
+        }
+        else{
+          new_matrix[i,j] <- 1
+        }
+     
+    }
+  
+  return(new_matrix)
+}
+
+ZAD 5.
+function(a,b,c){
+  d=b^2-4*a*c
+  if ((d>0) & (a!=0)){
+    x1=(-b-sqrt(d))/(2*a)
+    x2=(-b+sqrt(d))/(2*a)
+    cat('x1 = ',x1,'  ','x2 = ',x2)
+  }
+  else if((d==0) & (a!=0)){
+    x=(-b)/(2*a)
+    cat('x = ',x)
+  }
+  else{
+    cat('To r�wnanie kwadratowe nie ma rozwi�za� w zbiorze liczb rzeczywistych')
+  }
+}
+
+
+ZAD 6.
+function()
+{
+  A = matrix(1:6, nrow = 2, ncol=3)
+  B = matrix(1:6, nrow = 3, ncol=2) 
+  print(A)
+  print(B)
+  if(ncol(A)==nrow(B)){
+    print(A%*%B)
+  }
+  else{
+    print('Liczba kolumn macierzy A musi by� r�wna liczbie wierszy w macierzy B')
+  }
+}

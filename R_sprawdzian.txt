@@ -1,0 +1,32 @@
+zad 1.
+Utwórz nową ramkę o nazwiemalehouseholdstatistics.csvzawierającą dane tylko tychgospodarstw domowych, w których mąż zarabia więcej od żony, wspólny dochód nie przekracza 200 tys.rocznie i para ma co najmniej jedno dziecko.
+
+male_household_statistics.csv<-subset(household_statistics,household_statistics$income_husband>household_statistics$income_wife&household_statistics$number_children>=1&household_statistics$income_husband+household_statistics$income_wife<200000)
+
+ZAD 2.
+Oblicz średnią i medianę zarobków mężów i zarobków żon
+Dla mężów:
+mean(household_statistics$income_husband, na.rm=TRUE)
+61249.58
+median(male_household_statistics.csv$income_husband, , na.rm=TRUE)
+ 55000
+Dla żon:
+mean(male_household_statistics.csv$income_wife,  na.rm=TRUE)
+15986.3
+median(male_household_statistics.csv$income_wife,  na.rm=TRUE)
+ 10000
+
+ZAD 3.
+Wypisz dane tych gospodarstw, w których dochód męża jest powyżej średnich dochodówmężów a liczba dzieci jest medianą (o ile takie istnieją).
+
+subset(male_household_statistics.csv, male_household_statistics.csv$income_husband>mean(male_household_statistics.csv$income_husband)&male_household_statistics.csv$number_children==median(male_household_statistics.csv$number_children, na.rm = TRUE))
+
+
+ZAD 4.
+barplot(table(male_household_statistics.csv$own),xlab = 'State',ylab = 'Amount',main = 'Own rules')
+
+ZAD 5.
+hist(male_household_statistics.csv$bedrooms,main = 'Bedrooms amount',xlab = 'Bedrooms',ylab = 'Amount')
+
+ZAD 6.
+ plot(male_household_statistics.csv$age_wife,male_household_statistics.csv$number_children,type='p',main = 'Children and wife age dependency', ylab = 'Childrens',xlab = 'Wife Age')
